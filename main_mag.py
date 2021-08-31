@@ -115,18 +115,29 @@ isOdd = True
 for row in sheet.iter_rows(min_row=rownum + 2, min_col=colnum, max_row=rownum + 103, max_col=colnum + 3):
     if isOdd:
         oddSheet['E' + str(index)] = row[0].value
-        if len(str(row[0].value)) > 20:
-            oddSheet['E' + str(index)].font = Font(name='TimesNewRoman', size=9)
+        # Ручной подгон высоты ячейки
+        if len(str(row[0].value)) > 10:
             oddSheet.row_dimensions[oddSheet['E' + str(index)].row].height = 30
+        if len(str(row[0].value)) > 28:
+            oddSheet['E' + str(index)].font = Font(name='TimesNewRoman', size=9)
+        if len(str(row[0].value)) > 55:
+            oddSheet.row_dimensions[oddSheet['E' + str(index)].row].height = 40
+        if len(str(row[0].value)) > 90:
+            oddSheet.row_dimensions[oddSheet['E' + str(index)].row].height = 50
         oddSheet['G' + str(index)] = row[1].value
         oddSheet['H' + str(index)] = row[2].value
         oddSheet['J' + str(index)] = row[3].value
         isOdd = False
     else:
         evenSheet['E' + str(index)] = row[0].value
-        if len(str(row[0].value)) > 20:
-            evenSheet['E' + str(index)].font = Font(name='TimesNewRoman', size=9)
+        if len(str(row[0].value)) > 10:
             evenSheet.row_dimensions[evenSheet['E' + str(index)].row].height = 30
+        if len(str(row[0].value)) > 28:
+            evenSheet['E' + str(index)].font = Font(name='TimesNewRoman', size=9)
+        if len(str(row[0].value)) > 55:
+            evenSheet.row_dimensions[evenSheet['E' + str(index)].row].height = 40
+        if len(str(row[0].value)) > 90:
+            evenSheet.row_dimensions[evenSheet['E' + str(index)].row].height = 50
         evenSheet['G' + str(index)] = row[1].value
         evenSheet['H' + str(index)] = row[2].value
         evenSheet['J' + str(index)] = row[3].value
